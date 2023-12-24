@@ -1,0 +1,5 @@
+xcopy /y $(TargetDir)$(TargetName).dll "C:\Users\alecd\source\NetcodePatcher\plugins\Alec1017-AlecsCoolMod\"
+xcopy /y $(TargetDir)$(TargetName).pdb "C:\Users\alecd\source\NetcodePatcher\plugins\Alec1017-AlecsCoolMod\"
+cd "C:\Users\alecd\source\NetcodePatcher\"
+NetcodePatcher.dll plugins\ deps\
+xcopy /y C:\Users\alecd\source\NetcodePatcher\plugins\Alec1017-AlecsCoolMod\$(TargetName).dll "C:\Program Files (x86)\Steam\steamapps\common\Lethal Company\BepInEx\plugins\Alec1017-AlecsCoolMod"
