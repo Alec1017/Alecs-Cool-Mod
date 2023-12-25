@@ -2,7 +2,6 @@
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using LCSoundTool;
 using System;
 using System.IO;
 using System.Reflection;
@@ -23,17 +22,13 @@ namespace AlecsCoolMod
         public static AssetBundle MainAssets;
 
         // create a harmony instance
-        private readonly Harmony harmony = new Harmony(modGUID);
+        private static readonly Harmony harmony = new Harmony(modGUID);
 
         // creates a static reference to this mod
         public static TestModBase Instance;
 
         // create a logging source
         internal ManualLogSource logger;
-
-        // create custom sounds for random effects
-        public static AudioClip customFallSound;
-        public static AudioClip customTurretSound;
 
         private void Awake()
         {
@@ -55,18 +50,10 @@ namespace AlecsCoolMod
 
         private void Start()
         {
-            // get the custom audio clip
-            customFallSound = SoundTool.GetAudioClip("Alec1017-AlecsCoolMod", "wilhelm_scream.wav");
-            customTurretSound = SoundTool.GetAudioClip("Alec1017-AlecsCoolMod", "surprise.mp3");
-            
-            // replace the sound
-            SoundTool.ReplaceAudioClip("DieFromFallDamageSFX1", customFallSound);
-            SoundTool.ReplaceAudioClip("TurretSeePlayer", customTurretSound);
-
             // Initiate all patches
             harmony.PatchAll(typeof(NetworkManagerPatch));
             harmony.PatchAll(typeof(PlayerControllerBPatch));
-            harmony.PatchAll(typeof(CompanySpeechPatch));
+            harmony.PatchAll(typeof(AudioPatch));
 
             // Subscribe to the scene loaded event
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -84,12 +71,16 @@ namespace AlecsCoolMod
             if (Instance == null)
                 return;
 
-            // generate a unique seed
-            int newSeed = (int)DateTime.Now.Ticks;
+            // When a scene is loaded that contains a network manager, make sure all players
+            // are using the same unity random seed
+            if (NetworkHandler.Instance)
+            {
+                // generate a unique seed
+                int newSeed = (int)DateTime.Now.Ticks;
 
-            // When the scene is loaded, make sure all players are using the same
-            // unity random seed
-            NetworkHandler.Instance.SendSeedServerRpc(newSeed);
+                // send the seed to the clients
+                NetworkHandler.Instance.SendSeedServerRpc(newSeed);
+            }
         }
 
         // Netcode Patcher

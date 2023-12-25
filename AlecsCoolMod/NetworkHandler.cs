@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity.Netcode;
 
 namespace AlecsCoolMod
@@ -23,18 +19,15 @@ namespace AlecsCoolMod
             // event cant be subscribed to multiple times.
             SeedChanged = null;
 
-            // Remove any previously existing game object. This can only be
+            // Remove any previously existing game object, if it exists. This can only be
             // done by the host
-            if (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsServer)
+            if (Instance && (NetworkManager.Singleton.IsHost || NetworkManager.Singleton.IsServer))
             {
-                Instance?.gameObject.GetComponent<NetworkObject>().Despawn();
+                Instance.gameObject.GetComponent<NetworkObject>().Despawn();
             }
 
             // Set the instance
             Instance = this;
-
-            // Allow base implementation to continue spawn setup
-            base.OnNetworkSpawn();
         }
 
         // Receives a seed value from the server
@@ -55,9 +48,6 @@ namespace AlecsCoolMod
             // Dont call a server RPC method if not the host
             if (!IsHost)
                 return;
-
-            // Initialize the seed for the same randomness between clients
-            UnityEngine.Random.InitState(seed);
 
             // Send the seed value to the client RPC method
             ReceiveSeedClientRpc(seed);

@@ -1,8 +1,8 @@
 {
   "namespace": "AlecsCoolMod",
   "name": "AlecsCoolMod",
-  "description": "Just messing around with some stuff.",
-  "version_number": "1.0.0",
+  "description": "Contains some random mods. If I don't know you, then don't download this.",
+  "version_number": "1.0.2",
   "dependencies": [
     "BepInEx-BepInExPack-5.4.2100",
     "no00ob-LCSoundTool-1.4.0"

@@ -21,14 +21,6 @@ namespace AlecsCoolMod.Patches
             // Load the network handler prefab
             networkPrefab = TestModBase.MainAssets.LoadAsset<GameObject>("NetworkHandler.prefab");
 
-            if (networkPrefab == null)
-            {
-                TestModBase.Instance.logger.LogWarning("failed to load network prefab");
-            } else
-            {
-                TestModBase.Instance.logger.LogInfo("Network prefab loaded!");
-            }
-
             // Add the network handler component to the prefab
             networkPrefab.AddComponent<NetworkHandler>();
 
