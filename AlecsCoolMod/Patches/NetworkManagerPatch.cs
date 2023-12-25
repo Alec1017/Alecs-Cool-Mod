@@ -20,7 +20,7 @@ namespace AlecsCoolMod.Patches
 
             // Load the network handler prefab
             networkPrefab = TestModBase.MainAssets.LoadAsset<GameObject>("NetworkHandler.prefab");
-
+            
             // Add the network handler component to the prefab
             networkPrefab.AddComponent<NetworkHandler>();
 

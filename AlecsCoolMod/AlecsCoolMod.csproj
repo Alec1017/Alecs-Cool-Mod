@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
@@ -25,6 +25,9 @@
       </Reference>
       <Reference Include="LC_SoundTool">
         <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\BepInEx\plugins\LC_SoundTool.dll</HintPath>
+      </Reference>
+      <Reference Include="LethalLib">
+        <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\BepInEx\plugins\LethalLib.dll</HintPath>
       </Reference>
       <Reference Include="Unity.Netcode.Components">
         <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Netcode.Components.dll</HintPath>

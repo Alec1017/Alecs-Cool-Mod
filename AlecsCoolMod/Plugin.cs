@@ -1,4 +1,5 @@
-﻿using AlecsCoolMod.Patches;
+﻿using AlecsCoolMod.Entities;
+using AlecsCoolMod.Patches;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -16,7 +17,7 @@ namespace AlecsCoolMod
         // define some constant values for the mod
         private const string modGUID = "AlecsCoolMod";
         private const string modName = "Alecs Cool Mod";
-        private const string modVersion = "1.0.2";
+        private const string modVersion = "1.1.0";
 
         // Define the main asset bundle
         public static AssetBundle MainAssets;
@@ -40,6 +41,9 @@ namespace AlecsCoolMod
 
             // Load in the asset bundle
             MainAssets = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets/assetbundle"));
+
+            // Register all modded items
+            ItemRegistry.LoadItems(MainAssets);
 
             // Netcode patcher stuff
             NetcodePatcher();

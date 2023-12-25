@@ -29,7 +29,8 @@ namespace AlecsCoolMod.Patches
                     "just_do_it.mp3",
                     "boys_are_back.wav",
                     "jg_wentworth.mp3",
-                    "great_asset.mp3"
+                    "great_asset.mp3",
+                    "little_einsteins.mp3"
                 };
 
                 // get the custom audio clips for sound effects
@@ -47,7 +48,7 @@ namespace AlecsCoolMod.Patches
                     SoundTool.ReplaceAudioClip("IntroCompanySpeech", clip, 1f / companySpeeches.Count);
                 }
 
-                // replace the sound effects
+                // replace the standard sound effects
                 SoundTool.ReplaceAudioClip("DieFromFallDamageSFX1", customFallSound);
                 SoundTool.ReplaceAudioClip("TurretSeePlayer", customTurretSound);
             }

@@ -116,3 +116,5 @@ C:\Users\alecd\source\repos\AlecsCoolMod\AlecsCoolMod\obj\Debug\netstandard2.1\A
 C:\Users\alecd\source\repos\AlecsCoolMod\AlecsCoolMod\obj\Debug\netstandard2.1\AlecsCoolMod.dll
 C:\Users\alecd\source\repos\AlecsCoolMod\AlecsCoolMod\obj\Debug\netstandard2.1\AlecsCoolMod.pdb
 C:\Users\alecd\source\repos\AlecsCoolMod\AlecsCoolMod\obj\Debug\netstandard2.1\AlecsCoolMod.sourcelink.json
+C:\Users\alecd\source\repos\AlecsCoolMod\AlecsCoolMod\bin\Debug\netstandard2.1\LethalLib.dll
+C:\Users\alecd\source\repos\AlecsCoolMod\AlecsCoolMod\bin\Debug\netstandard2.1\LethalLib.pdb
