@@ -68,5 +68,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-AlecsCoolMod/bin/**/*
-AlecsCoolMod/obj/**/*
+**/AlecsCoolMod/bin/**/*
+**/AlecsCoolMod/obj/**/*
