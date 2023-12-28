@@ -38,7 +38,7 @@ namespace AlecsCoolMod.Patches
             {
                 // Instantiate the network prefab
                 GameObject NetworkHandlerHost = Object.Instantiate(networkPrefab, Vector3.zero, Quaternion.identity);
-
+           
                 // Spawn the object
                 NetworkHandlerHost.GetComponent<NetworkObject>().Spawn();
             }

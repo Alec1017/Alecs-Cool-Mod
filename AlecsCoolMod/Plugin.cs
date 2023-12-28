@@ -1,5 +1,4 @@
-﻿using AlecsCoolMod.Entities;
-using AlecsCoolMod.Patches;
+﻿using AlecsCoolMod.Patches;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -17,7 +16,7 @@ namespace AlecsCoolMod
         // define some constant values for the mod
         private const string modGUID = "AlecsCoolMod";
         private const string modName = "Alecs Cool Mod";
-        private const string modVersion = "1.1.0";
+        private const string modVersion = "1.0.3";
 
         // Define the main asset bundle
         public static AssetBundle MainAssets;
@@ -42,49 +41,19 @@ namespace AlecsCoolMod
             // Load in the asset bundle
             MainAssets = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets/assetbundle"));
 
-            // Register all modded items
-            ItemRegistry.LoadItems(MainAssets);
-
             // Netcode patcher stuff
             NetcodePatcher();
 
             // log that the mod has installed properly
-            logger.LogInfo("Alec's cool mod mod has awakened");
+            logger.LogInfo("Alec's cool mod has awakened.");
         }
 
         private void Start()
         {
             // Initiate all patches
             harmony.PatchAll(typeof(NetworkManagerPatch));
-            harmony.PatchAll(typeof(PlayerControllerBPatch));
             harmony.PatchAll(typeof(AudioPatch));
-
-            // Subscribe to the scene loaded event
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        private void OnDestroy()
-        {
-            // Unsubscribe from the scene loaded event
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-        }
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            // Need an active instance of the test mod first
-            if (Instance == null)
-                return;
-
-            // When a scene is loaded that contains a network manager, make sure all players
-            // are using the same unity random seed
-            if (NetworkHandler.Instance)
-            {
-                // generate a unique seed
-                int newSeed = (int)DateTime.Now.Ticks;
-
-                // send the seed to the clients
-                NetworkHandler.Instance.SendSeedServerRpc(newSeed);
-            }
+            //harmony.PatchAll(typeof(PlayerControllerBPatch));
         }
 
         // Netcode Patcher

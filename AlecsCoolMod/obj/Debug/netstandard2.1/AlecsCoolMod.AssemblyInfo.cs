@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Just messing around with some stuff")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0feb0255d297f93d4939def310a9d4af3ed9d653")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93ac47e05a361b3e4f98d1aaf8575f9460193a7f")]
 [assembly: System.Reflection.AssemblyProductAttribute("AlecsCoolMod")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AlecsCoolMod")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
