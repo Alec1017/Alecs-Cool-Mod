@@ -24,14 +24,24 @@ namespace AlecsCoolMod.Entities
 
             foreach (var item in ModdedItems)
             {
+                TestModBase.Instance.logger.LogWarning($"do we have a item: {item != null}");
+                TestModBase.Instance.logger.LogWarning($"do we have a item path: {item.itemPath != null} {item.itemPath}");
                 // get the item asset
                 Item itemAsset = assets.LoadAsset<Item>(item.itemPath);
+
+                TestModBase.Instance.logger.LogWarning($"do we have a item asset: {itemAsset != null}");
+
+                TestModBase.Instance.logger.LogWarning("loaded the asset into an item");
 
                 // Store the item prefab in a dictionary
                 Prefabs.Add(item.name, itemAsset.spawnPrefab);
 
+                TestModBase.Instance.logger.LogWarning("registered the prefab");
+
                 // Register the scrap item
                 Items.RegisterScrap(itemAsset, ((ModdedScrapItem)item).rarity, ((ModdedScrapItem)item).levelType);
+
+                TestModBase.Instance.logger.LogWarning("registered the scrap");
             }
         }
     }

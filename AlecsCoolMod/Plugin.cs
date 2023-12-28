@@ -42,9 +42,6 @@ namespace AlecsCoolMod
             // Load in the asset bundle
             MainAssets = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Assets/assetbundle"));
 
-            // Register all modded items
-            ItemRegistry.LoadItems(MainAssets);
-
             // Netcode patcher stuff
             NetcodePatcher();
 
@@ -54,6 +51,9 @@ namespace AlecsCoolMod
 
         private void Start()
         {
+            // Register all modded items
+            ItemRegistry.LoadItems(MainAssets);
+
             // Initiate all patches
             harmony.PatchAll(typeof(NetworkManagerPatch));
             harmony.PatchAll(typeof(PlayerControllerBPatch));
